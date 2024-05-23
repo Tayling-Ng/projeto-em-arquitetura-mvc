@@ -1,35 +1,27 @@
 require('dotenv').config()
 const express = require('express')
-const { MongoClient, ObjectId } = require('mongodb')
+const { connectToDatabase } = require('./db/conexao')
+// const { MongoClient, ObjectId } = require('mongodb')
 
 const app = express()
 
 // Receber o corpo da requisição em json
 app.use(express.json())
 
-// Informações do Banco de Dados
-const dbUrl = process.env.DATABASE_URL
-// Quando muda o nome do banco automaticamente cria um banco novo no MongoDB
-const dbName = 'projeto-em-arquitetura-mvc'
-
 // Declarar a função de conxeção com o Banco de dados
 async function main() {
-    const client = new MongoClient(dbUrl)
-    // console.log('Conectando ao banco de dados...')
-    await client.connect()
-    // console.log('Banco de dados conectado com sucesso!')
+    // FIX: Utilizar a connectToDatabase() e receber o DB
+    await connectToDatabase()
 
-    // Estabelecer a conexão com o Banco de dados
-    const db = client.db(dbName)
-    const collection = db.collection('personagem')
+    // const collection = db.collection('personagem')
 
     // Requisição GET: http://localhost:3000
     app.get('/', function (req, res) {
         res.send('Hi Folks!')
     })
 
-    const lista = ['Java', 'Kotlin', 'Android']
-
+    // FIX: Mover isso para a pasta personagem
+    /*
     // Endpoint Read All: [GET] /personagem
     // Requisição GET: http://localhost:3000/personagem
     app.get('/personagem', async function (req, res) {
@@ -140,8 +132,12 @@ async function main() {
         res.send('Item removido com sucesso: ' + id)
     })
 }
+*/
+app.listen(3000, function() {
+    console.log("Servidor rodando em http://localhost:3000")
+})
 
-app.listen(3000)
+}
 
 // Executa a função main() para conectar o Banco de Dados.
 main()
