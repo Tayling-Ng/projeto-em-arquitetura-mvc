@@ -9,7 +9,8 @@ app.use(express.json())
 
 // Informações do Banco de Dados
 const dbUrl = process.env.DATABASE_URL
-const dbName = 'MongoDB_implementacao'
+// Quando muda o nome do banco automaticamente cria um banco novo no MongoDB
+const dbName = 'projeto-em-arquitetura-mvc'
 
 // Declarar a função de conxeção com o Banco de dados
 async function main() {
