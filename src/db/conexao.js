@@ -7,6 +7,7 @@ const dbName = 'projeto-em-arquitetura-mvc'
 
 const client = new MongoClient(dbUrl)
 
+
 // Declarar a função de conxeção com o Banco de dados
 async function connectToDatabase() {
     // console.log('Conectando ao banco de dados...')

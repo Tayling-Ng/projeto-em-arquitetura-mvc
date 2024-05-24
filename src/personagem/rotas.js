@@ -4,10 +4,6 @@ const express = require('express')
 const controladores = require('./controladores')
 const router = express.Router()
 
-function teste(req, res) {
-    res.send('Ok!')
-}
-
 router.get('/', controladores.readAll)
 router.get('/:id', controladores.readById)
 router.post('/', controladores.create)

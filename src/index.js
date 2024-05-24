@@ -4,15 +4,15 @@ const { connectToDatabase } = require('./db/conexao')
 const personagemRouter = require('./personagem/rotas')
 // const { MongoClient, ObjectId } = require('mongodb')
 
-const app = express()
-
-// Receber o corpo da requisição em json
-app.use(express.json())
-
 // Declarar a função de conxeção com o Banco de dados
 async function main() {
     // FIX: Utilizar a connectToDatabase() e receber o DB
     await connectToDatabase()
+
+    const app = express()
+
+    // Receber o corpo da requisição em json
+    app.use(express.json())
 
     // const collection = db.collection('personagem')
 

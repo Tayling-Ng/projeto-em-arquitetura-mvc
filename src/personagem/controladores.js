@@ -5,20 +5,33 @@ async function readAll(req, res) {
     res.send(itens)
 }
 
-function readById(req, res) {
-    res.send('Read By ID')
+async function readById(req, res) {
+    const id = req.params.id
+    const item = await service.readById(id)
+    res.send(item)
 }
 
-function create(req, res) {
-    res.send('Create')
+async function create(req, res) {
+    const novoItem = req.body
+    res.status(201).send(novoItem)
 }
 
-function updateById(req, res) {
-    res.send('Update By ID')
+async function updateById(req, res) {
+    const id = req.params.id
+    const novoItem = req.body
+
+    if (!newItem || !newItem.nome) {
+        return res.status(400).send('Corpo da requisição deve conter a propriedade `nome`.')
+      }
+    await service.updateById(id, novoItem)
+
+    res.send(novoItem)
 }
 
-function deleteById(req, res) {
-    res.send('Delete By ID')
+async function deleteById(req, res) {
+    const id = req.params.id
+    await service.deleteById(id)
+    res.send('Item removido com sucesso: ' + id)
 }
 
 module.exports = {
