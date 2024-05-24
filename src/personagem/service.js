@@ -11,9 +11,16 @@ function readAll() {
     return getCollection().find().toArray()
 }
 
-function readById() {
-    // Retornar o item na collection usando o ID
-    return getCollection().findOne({ _id: new ObjectId(id) })
+
+//JSDoc
+// ObjectId foi marcado com preterido, usou o JSDoc pra indicar que é uma string
+/**
+ * @param {string} id 
+ * @returns 
+ */
+function readById(id) {
+    // Retornar o item da collection usando o id
+    return getCollection().findOne({ _id: new ObjectId(id) }) 
 }
 
 function create() {

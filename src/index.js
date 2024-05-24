@@ -25,37 +25,10 @@ async function main() {
 
     // FIX: Mover isso para a pasta personagem
     /*
-    // Endpoint Read All: [GET] /personagem
-    // Requisição GET: http://localhost:3000/personagem
-    app.get('/personagem', async function (req, res) {
-
-        // Acessar a lista de itens na coleção no MongoDB
-        const itens = await collection.find().toArray()
-
-        // Enviar a lista como resultado
-        res.send(itens)
-    })
-
-    // Endpoint Read by ID: [GET] /personagem/:id
-    // Requisição GET: http://localhost:3000/personagem/id
-    app.get('/personagem/:id', async function (req, res) {
-
-        // Acessar o parâmetro id
-        const id = req.params.id
-
-        // Acessar o item da collection
-        const item = await collection.findOne({_id: new ObjectId(id)}) 
-
-        if (!item) {
-            return res.status(404).send('Item não encontrado.')
-        }
-
-        res.send(item)
-    })
 
     // Endpoint Create: [POST] /personagem
     // Escrever o corpo da requisição
-    // Requisição POST: http://localhost:3000/personagem
+        // Requisição POST: http://localhost:3000/personagem
     app.post('/personagem', async function (req, res) {
 
         // Acessar o corpo da requisição

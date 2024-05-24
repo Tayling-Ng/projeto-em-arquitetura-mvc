@@ -1,13 +1,22 @@
 const service = require('./service')
 
 async function readAll(req, res) {
+    // Acessar a lista de personagens na collection do MongoDB
     const itens = await service.readAll()
+    // Enviar a lista de personagens como resultado
     res.send(itens)
 }
 
 async function readById(req, res) {
+    // Acessar o parâmetro id
     const id = req.params.id
+    // Acessar o item personagem no service
     const item = await service.readById(id)
+
+    if (!item) {
+        return res.status(404).send('Item não encontrado.')
+    }
+    
     res.send(item)
 }
 
