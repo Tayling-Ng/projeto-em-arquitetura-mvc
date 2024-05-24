@@ -38,15 +38,25 @@ async function create(req, res) {
 }
 
 async function updateById(req, res) {
-    const id = req.params.id
-    const novoItem = req.body
+    // Acessar o parâmetro id
+    const id = req.params.id 
 
-    if (!newItem || !newItem.nome) {
-        return res.status(400).send('Corpo da requisição deve conter a propriedade `nome`.')
-      }
+    // TODO: Validação: Checar se o item na requisição está na lista
+
+    // Acessar o corpo da requisição
+    const novoItem = req.body 
+
+    // Validação: Verificar se a palavra "nome" está no corpo da requisição
+    if (!novoItem || !novoItem.nome) {
+        return res.status(400).send('O corpo da requisição tem que conter a propriedade "nome".')
+    }
+
+    // TODO: Validação: Verificar se o novo item já está na collection
+
+    // Atualizar o novo item usando o service
     await service.updateById(id, novoItem)
 
-    res.send(novoItem)
+    res.status(201).send(novoItem)
 }
 
 async function deleteById(req, res) {

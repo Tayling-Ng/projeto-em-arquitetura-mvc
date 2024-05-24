@@ -24,15 +24,19 @@ function readById(id) {
 }
 
 function create(novoItem) {
-    // Adicionar na collection
+    // Adicionar na coleção
     return getCollection().insertOne(novoItem)
 }
 
-function updateById() {
-    // Atualizamos na collection o newItem pelo ID
+/**
+ * @param {string} id 
+ * @returns 
+ */
+function updateById(id, novoItem) {
+    // Atualizar na coleção o novoItem pelo ID
     return getCollection().updateOne(
         { _id: new ObjectId(id) },
-        { $set: newItem }
+        { $set: novoItem }
   )
 }
 

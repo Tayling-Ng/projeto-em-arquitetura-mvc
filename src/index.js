@@ -26,69 +26,6 @@ async function main() {
     // FIX: Mover isso para a pasta personagem
     /*
 
-    // Endpoint Create: [POST] /personagem
-    // Escrever o corpo da requisição
-        // Requisição POST: http://localhost:3000/personagem
-    app.post('/personagem', async function (req, res) {
-
-        // Acessar o corpo da requisição
-        const novoItem = req.body 
-        // console.log(body)
-
-        // Validação: Verificar se a palavra "nome" está no corpo da requisição
-        if (!novoItem || !novoItem.nome) {
-            return res.status(400).send('O corpo da requisição tem que conter a propriedade "nome".')
-        }
-
-        // Validação: Verificar se o novo item já está na collection
-        const existe = await collection.findOne({ nome: novoItem.nome });
-
-        if (existe) {
-        return res.status(409).send('Esse item já existe na lista.');
-        }
-
-        // Adicionar o valor da propriedade na collection
-        await collection.insertOne(novoItem) 
-
-        res.status(201).send(novoItem)
-        // console.log(lista)
-    })
-
-    // Endpoint Update: [PUT] /personagem
-    // Requisição PUT: http://localhost:3000/personagem/1
-    app.put('/personagem/:id', async function (req, res) {
-
-        // Acessar o parâmetro id
-        const id = req.params.id 
-
-        // Validação: Checar se o item na requisição está na lista
-        if (!ObjectId.isValid(id)) {
-            return res.status(400).send('Item não encontrado.');
-        }
-
-        // Acessar o corpo da requisição
-        const novoItem = req.body 
-
-        // Validação: Verificar se a palavra "nome" está no corpo da requisição
-        if (!novoItem || !novoItem.nome) {
-            return res.status(400).send('O corpo da requisição tem que conter a propriedade "nome".')
-        }
-
-        // Validação: Verificar se o novo item já está na collection
-        const existe = await collection.findOne({ nome: novoItem.nome });
-
-        if (existe) {
-            return res.status(409).send('Esse item já existe na lista.');
-        }
-
-        // Atualizar na collection o novo item pelo id - 1
-        await collection.updateOne(
-            { _id: new ObjectId(id) },
-            { $set: novoItem}
-        )
-
-        res.status(201).send(novoItem)
-    })
 
     // Endpoint Delete: [DELETE] /personagem/:id
     // Requisição DELETE: http://localhost:3000/personagem/id
