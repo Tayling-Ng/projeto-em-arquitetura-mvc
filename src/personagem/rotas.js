@@ -1,7 +1,9 @@
 const express = require('express')
+
 // const { readAll, readById, create, updateById, deleteById } = require('./controladores')
-// Ao invés de importar todos os controladores, importa o arquivo todo asim:
+// Ao invés de importar todos os controladores, importa o arquivo todo assim:
 const controladores = require('./controladores')
+
 const router = express.Router()
 
 router.get('/', controladores.readAll)
