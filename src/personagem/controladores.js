@@ -60,8 +60,14 @@ async function updateById(req, res) {
 }
 
 async function deleteById(req, res) {
+    // Acessar o parâmetro id
     const id = req.params.id
+
+    // TODO: Validação: Chegar se o item na requisição está na lista
+    
+    // Remover o item do DB usando id via service
     await service.deleteById(id)
+    
     res.send('Item removido com sucesso: ' + id)
 }
 

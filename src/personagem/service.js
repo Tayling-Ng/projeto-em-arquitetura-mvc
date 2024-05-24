@@ -38,10 +38,15 @@ function updateById(id, novoItem) {
         { _id: new ObjectId(id) },
         { $set: novoItem }
   )
+
 }
 
-function deleteById() {
-     // Remover o item da collection usando o ID
+/**
+ * @param {string} id 
+ * @returns 
+ */
+function deleteById(id) {
+    // Remover o item da collection usando id - 1
     return getCollection().deleteOne({ _id: new ObjectId(id) })
 }
 
