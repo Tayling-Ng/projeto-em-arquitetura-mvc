@@ -1,15 +1,16 @@
 const express = require('express')
+const { readAll, readById, create, updateById, deleteById } = require('./controladores')
 const router = express.Router()
 
 function teste(req, res) {
     res.send('Ok!')
 }
 
-router.get('/', teste) // read all
-router.get('/:id', teste) // read by id
-router.post('/', teste) // create
-router.put('/:id', teste) // update
-router.delete('/:id', teste) // delete
+router.get('/', readAll) // read all
+router.get('/:id', readById) // read by id
+router.post('/', create) // create
+router.put('/:id', updateById) // update
+router.delete('/:id', deleteById) // delete
 
 
 module.exports = router
