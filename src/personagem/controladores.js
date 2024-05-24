@@ -1,5 +1,8 @@
-function readAll(req, res) {
-    res.send('Read All')
+const service = require('./service')
+
+async function readAll(req, res) {
+    const itens = await service.readAll()
+    res.send(itens)
 }
 
 function readById(req, res) {
