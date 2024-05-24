@@ -16,12 +16,24 @@ async function readById(req, res) {
     if (!item) {
         return res.status(404).send('Item não encontrado.')
     }
-    
+
     res.send(item)
 }
 
 async function create(req, res) {
-    const novoItem = req.body
+    // Acessar o corpo da requisição
+    const novoItem = req.body 
+    
+    // Validação: Verificar se a palavra "nome" está no corpo da requisição
+    if (!novoItem || !novoItem.nome) {
+    return res.status(400).send('O corpo da requisição tem que conter a propriedade "nome".')
+    }
+
+    // TODO: Validação: Verificar se o novo item já está na collection
+
+    // Adicionar ua propriedade na coleção
+    await service.create(novoItem)
+
     res.status(201).send(novoItem)
 }
 
